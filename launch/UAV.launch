@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<launch>   
+
+  <param name="use_sim_time" value="true"/>
+  <arg name="is_multirobot_system" default="false"/>
+  
+  <!-- sync between roscores on each robot/pc -->
+  <include file="$(find mobil_shared_coordinates)/launch/include/multimaster.launch" if="$(arg is_multirobot_system)"/>
+
+  <!-- TODO: Change the roll/pitch/yaw in world_to_drone-->
+  <!-- Should be part of the drone launch file -->
+  <node pkg="tf" type="static_transform_publisher" name="world_to_drone" args="0 0 0 0 0 0 world drone 100"/>
+  <!-- TODO: right and left are wrong, need to replace that in the firefly launch files -->
+  <node pkg="tf" type="static_transform_publisher" name="drone_to_cam_right" args="-0.16 0 0 0 0 3.1416 drone head_camera_right 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="drone_to_cam_left"  args=" 0.16 0 0 0 0 -2.1817 drone head_camera_left 100"/>
+
+  <node pkg="mobil_shared_coordinates" type="marker_data_client.py" name="marker_data_client_kommado" output="screen" cwd="node">
+      <param name="object_data_file_path" type="string" value="$(find mobil_shared_coordinates)/data/test_file_object"/>  
+      <param name="ar_pose_launch_file" type="string" value="$(find mobil_shared_coordinates)/launch/include/ar_pose.launch"/>		  
+      <param name="team_members" type="string" value="kommado"/>
+  </node>
+    
+ 
+</launch>

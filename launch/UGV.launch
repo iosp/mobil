@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<launch>   
+
+  <param name="use_sim_time" value="true"/>
+  <arg name="is_multirobot_system" default="false"/>
+  <arg name="bag" default="twocameras_2015-06-29-14-56-38_fixed.bag"/>
+  
+  <!-- sync between roscores on each robot/pc -->
+  <include file="$(find mobil_shared_coordinates)/launch/include/multimaster.launch" if="$(arg is_multirobot_system)"/>
+  
+  <node pkg="mobil_shared_coordinates" type="marker_data_service" name="marker_data_service_kommado" output="screen" cwd="node">
+      <param name="yaml_file_paths" type="string" value="$(find mobil_shared_coordinates)/example.yaml"/>  
+      <param name="robot_name" type="string" value="kommado"/>		   
+  </node>
+ 
+  <node pkg="mobil_shared_coordinates" type="mobil_shared_coordinates" name="mobil_shared_coordinates" args="$(arg bag)" output="screen" cwd="node">
+      <param name="camera_fn" type="string" value="drone"/>  
+      <param name="robot_fn" type="string" value="base_link"/>		  
+      <param name="center_marker_fn" type="string" value="center_marker"/>
+      <param name="left_marker_fn" type="string" value="left_marker"/>       
+      <param name="right_marker_fn" type="string" value="right_marker"/> 
+      <param name="front_marker_fn" type="string" value="front_marker"/>
+      <param name="rear_marker_fn" type="string" value="rear_marker"/> 
+      <param name="free_marker_fn" type="string" value="4x4_73"/> 
+  </node>
+ 
+   
+</launch>

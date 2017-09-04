@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<launch>   
+
+  <param name="use_sim_time" value="true"/>
+
+  <arg name="bag" default="twocameras_2015-06-29-14-56-38_fixed.bag"/>
+
+  <!-- Start rviz visualization ar_pose with preset config -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mobil_shared_coordinates)/launch/testing_arpose_config.rviz"/>
+
+  <!-- TODO: Change the roll/pitch/yaw in world_to_drone-->
+  <!-- Should be part of the drone launch file -->
+  <!-- node pkg="tf" type="static_transform_publisher" name="world_to_drone" args="0 0 0 0 0 0 world drone 100"/ -->
+  <!-- TODO: right and left are wrong, need to replace that in the firefly launch files -->
+  <!-- node pkg="tf" type="static_transform_publisher" name="drone_to_cam_right" args="-0.16 0 0 0 0 3.1416 drone head_camera_right 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="drone_to_cam_left"  args=" 0.16 0 0 0 0 -2.1817 drone head_camera_left 100"/ -->
+
+  <!-- Should be part of the drone launch file -->
+  <node name="ar_pose_right" pkg="ar_pose" type="ar_multi" respawn="false" output="screen">
+      <param name="marker_pattern_list" type="string" value="$(find mobil_shared_coordinates)/data/test_file_object"/>
+      <param name="threshold" type="int" value="100"/>
+   	  <remap from="/camera/camera_info" to="/usb_cam/camera_info"/>
+      <remap from="/camera/image_raw" to="/usb_cam/image_raw"/>
+  </node>
+
+  <!-- Should be part of the drone launch file -->
+  <node name="ar_pose_left" pkg="ar_pose" type="ar_multi" respawn="false" output="screen">
+      <param name="marker_pattern_list" type="string" value="$(find mobil_shared_coordinates)/data/test_file_object"/>
+      <param name="threshold" type="int" value="100"/>      
+      <!-- need to remap topics that ar_pose subscribes to, to the second camera -->
+      <remap from="/camera/camera_info" to="/usb_cam2/camera_info"/>
+      <remap from="/camera/image_raw" to="/usb_cam2/image_raw"/>
+  </node>
+
+  
+  <!-- Play the bag file -->  
+  <node pkg="rosbag" type="play" name="rosbag" args="/home/mikab4/catkin_ws/src/mobil_shared_coordinates/bag_files/$(arg bag) -\-clock -d 3" output="log"/>
+   
+</launch>
