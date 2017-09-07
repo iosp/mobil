@@ -1,11 +1,11 @@
 MOBIL SHARED COORDINATES PACKAGE
 
-Prerequiest:
+Prerequisites:
 
 1) ar_pose installed on UAV.(http://wiki.ros.org/ar_pose)
 2) Multimaster package installed on both UAV and UGV (http://wiki.ros.org/multimaster_fkie)
 2) This package installed on both UAV and UGV.
-3) ymal file on UGV with the markers data, including UGV markers transform 
+3) yaml file on UGV with the markers data, including UGV markers transform 
    to base of UGV (see marker_example.ymal).
 4) ar_pose launch file on UAV.
 
@@ -13,7 +13,7 @@ Run on UAV (example launch file: UAV.launch):
 
 1. Create static tfs between the cameras and the UAV base
 
-2. Runs marker_data_client ther recives UGV markers and free 
+2. Run marker_data_client that recives UGV markers and free 
    marker data and runs ar_pose with the marker data.
 
 
@@ -22,5 +22,5 @@ Run on UGV (example launch file: UGV.launch):
 1) Runs marker_data_service that sends markers data and publish the static transform 
    from the UGV marker to UGV base.
 
-2) Runs mobile_shared coordinates - the program that query the location of the  
+2) Runs mobil_shared coordinates - the program that query the location of the  
                                     goal marker relative to the UGV and print it.

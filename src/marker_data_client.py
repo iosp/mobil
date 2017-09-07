@@ -7,12 +7,10 @@ import roslaunch
 
 def get_robot_data(robot_name, is_first):
     service_name = 'object_data_%s' % robot_name
-    print service_name
     rospy.wait_for_service(service_name)
     try:
         object_data_srv = rospy.ServiceProxy(service_name, object_data)
         rsp = object_data_srv()
-        print rsp.file_contant
         if is_first:
             prem = 'w+'
         else:
@@ -22,7 +20,6 @@ def get_robot_data(robot_name, is_first):
             fd.write(rsp.file_contant)
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
-    print "i am here!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
 
 
@@ -44,7 +41,7 @@ if __name__ == "__main__":
     if rospy.has_param('~team_members'):
         team_members = rospy.get_param("~team_members")
         team_members = [x.strip() for x in team_members.split(',')]
-        print team_members, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        print team_members
     else:
         raise Exception('No team_members param')
 

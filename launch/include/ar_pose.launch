@@ -7,7 +7,7 @@
   <arg name="bag" default="twocameras_2015-06-29-14-56-38_fixed.bag"/>
 
   <!-- Start rviz visualization ar_pose with preset config -->
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mobil_shared_coordinates)/launch/testing_arpose_config.rviz"/>
+  <!--node pkg="rviz" type="rviz" name="rviz" args="-d $(find mobil_shared_coordinates)/launch/testing_arpose_config.rviz"/-->
 
   <!-- TODO: Change the roll/pitch/yaw in world_to_drone-->
   <!-- Should be part of the drone launch file -->
@@ -35,6 +35,6 @@
 
   
   <!-- Play the bag file -->  
-  <node pkg="rosbag" type="play" name="rosbag" args="/home/mikab4/catkin_ws/src/mobil_shared_coordinates/bag_files/$(arg bag) -\-clock -d 3" output="log"/>
+  <!--node pkg="rosbag" type="play" name="rosbag" args="$(find mobil_shared_coordinates)/bag_files/$(arg bag) -\-clock -d 3" output="log"/-->
    
 </launch>
