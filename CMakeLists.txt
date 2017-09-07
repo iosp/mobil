@@ -155,6 +155,11 @@ add_executable(marker_data_service src/Markers_file_parser.cpp src/marker_data_s
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
+# Executables depend on message generation.
+# Added those two lines to prevent compilation before generating messages
+add_dependencies(mobil_shared_coordinates mobil_shared_coordinates_generate_messages_cpp)
+add_dependencies(marker_data_service mobil_shared_coordinates_generate_messages_cpp)
+
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
