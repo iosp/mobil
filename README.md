@@ -6,7 +6,7 @@ Prerequisites:
 2) Multimaster package installed on both UAV and UGV (http://wiki.ros.org/multimaster_fkie)
 2) This package installed on both UAV and UGV.
 3) yaml file on UGV with the markers data, including UGV markers transform 
-   to base of UGV (see marker_example.ymal).
+   to base of UGV (see marker_example.yaml).
 4) ar_pose launch file on UAV.
 
 This package contains three launch files:
@@ -34,9 +34,9 @@ Running on UGV (launch file: UGV.launch):
 
 Running the mobil_shared_coordinate package:
 
-Run UAV.launch on the UAV and UGV.launch on the UGV. Once both are up, the UAV part launches the ar_pose module which gives transform data of markers in relation to the UAV's cameras. Using the obtained transforms from the ar_pose module and shared knowledge of the static transforms of the UAV and UGV, the UGV calculates the transforms of nearby objects in relation to its base. It is possible to run the UAV and UGV parts either on one ROS core or on multiple ROS cores (using the Multimaster package).
+Run UAV.launch on the UAV and UGV.launch on the UGV. Once both are up, the UAV part launches the ar_pose module which gives the transform of markers relative to the UAV's cameras. Using the obtained transforms from the ar_pose module and shared knowledge of the static transforms of the UAV and UGV, the UGV calculates the transforms of nearby objects relative to its base. It is possible to run the UAV and UGV parts either on one ROS core or on multiple ROS cores (using the Multimaster package).
 
 
 Simulation (launch file: mobil_sim.launch):
 
-Run mobil_sim.launch. This runs the UAV and UGV parts and in addition it runs Gazebo which simulates the UAV's cameras and an environment with markers. Using this environment Gazebo publishes image data to the right topics instead of real-time images obtained from the UAV. In addition, the simulation launch file runs rviz which visualizes the output of the functional part. The visualization shows the outputs of the UAV cameras and the complete transform tree composed by the UAV and the UGV.
+Run mobil_sim.launch. This runs the UAV and UGV parts and in addition it runs Gazebo which simulates the UAV's cameras and an environment with markers. Using this environment Gazebo publishes image data to the right topics, replacing the real-time images obtained from the UAV. In addition, the simulation launch file runs rviz which visualizes the output of the functional part. The visualization shows the outputs of the UAV cameras and the complete transform tree composed by the UAV and the UGV.

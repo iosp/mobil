@@ -68,6 +68,7 @@ int main(int argc, char **argv)
 		cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
 		return 0;
 	}
+
 	MarkersFileParser parser(yaml_file_path);
 	objects_markers = parser.getMarkersList();
 	int num_of_makrers = objects_markers.size();
@@ -80,13 +81,7 @@ int main(int argc, char **argv)
 					objects_markers[i]->getParentFram());
 		}
 	}
-//	while (ros::ok()){
-//		//publish all static transforms
-//		cout<<"i am here"<<endl;
-//
-//		ros::spinOnce();
-//		loop_rate.sleep();
-//	}
+
 	ros::spin();
 	return 0;
 }
