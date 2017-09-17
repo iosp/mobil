@@ -17,6 +17,10 @@
       <param name="threshold" type="int" value="100"/>
    	  <remap from="/camera/camera_info" to="/usb_cam/camera_info"/>
       <remap from="/camera/image_raw" to="/usb_cam/image_raw"/>
+<!--
+   	  <remap from="/camera/camera_info" to="/front_cam/camera/camera_info"/>
+      <remap from="/camera/image_raw" to="/front_cam/camera/image"/>
+-->
   </node>
 
   <!-- Should be part of the drone launch file -->

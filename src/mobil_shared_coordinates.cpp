@@ -90,7 +90,7 @@ void getFreeMarkerLocation()
 			//cout<<"##################################################################################################"<<endl;
 
 			// broadcast transform from UGV base_link to free_marker
-			freeMarkerTransform.child_frame_id_ = "free_marker_from_ugv";
+			freeMarkerTransform.child_frame_id_ = "free_marker_from_" + base_link_fn;
 			broadcaster.sendTransform(freeMarkerTransform);
 
 			if (csv_file) {

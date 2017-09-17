@@ -4,44 +4,44 @@ marker:
   name: center_marker
   parent_fram: center_marker_base_link
   path: data/4x4/4x4_3.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
-  transform: {x: 0, y: -0.415, z: -0.30, yaw: 0, pitch: 0, roll: 0}
+  transform: {x: 0, y: 0, z: -0.5, yaw: 0, pitch: 0, roll: 0}
 
 marker:
   name: rear_marker
   parent_fram: rear_marker_base_link
   path: data/4x4/4x4_17.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
-  transform: {x: 0, y: -0.14, z: 0, yaw: 0, pitch: 0, roll: -1.57}
+  transform: {x: 0, y: 0, z: -0.5, yaw: 0, pitch: 1.57, roll: -1.57}
 
 marker:
   name: right_marker
   parent_fram: right_marker_base_link
   path: data/4x4/4x4_26.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
-  transform: {x: -0.29, y: -0.14, z: -0.56, yaw: -0.27, pitch: -1.57, roll: -1.57}
+  transform: {x: 0, y: 0, z: -0.5, yaw: 0, pitch: 0, roll: -1.57}
 
 marker:
   name: front_marker
   parent_fram: front_marker_base_link
   path: data/4x4/4x4_42.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
-  transform: {x: 0, y: -0.15, z: -0.56, yaw: 3.14, pitch: 0, roll: 1.57}
+  transform: {x: 0, y: 0, z: -0.5, yaw: -1.57, pitch: -1.57, roll: 0}
 
 marker:
   name: left_marker
   parent_fram: left_marker_base_link
   path: data/4x4/4x4_55.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
-  transform: {x: 0.25, y: -0.21, z: -0.25, yaw: 0, pitch: 1.57, roll: -1.57}
+  transform: {x: 0, y: 0, z: -0.5, yaw: 3.14159, pitch: 0, roll: 1.57}
 
 goal_marker:
   name: 4x4_73
   path: data/4x4/4x4_73.patt
-  width: 200.0
+  width: 400.0
   center: {x: 0.0, y: 0.0}
