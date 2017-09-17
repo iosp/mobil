@@ -2,7 +2,7 @@ obj_name: komodo
 
 marker:
   name: center_marker
-  parent_fram: center_marker_base_link
+  parent_fram: center_marker_link_0
   path: data/4x4/4x4_3.patt
   width: 400.0
   center: {x: 0.0, y: 0.0}
@@ -10,7 +10,7 @@ marker:
 
 marker:
   name: rear_marker
-  parent_fram: rear_marker_base_link
+  parent_fram: rear_marker_link_0
   path: data/4x4/4x4_17.patt
   width: 400.0
   center: {x: 0.0, y: 0.0}
@@ -18,7 +18,7 @@ marker:
 
 marker:
   name: right_marker
-  parent_fram: right_marker_base_link
+  parent_fram: right_marker_link_0
   path: data/4x4/4x4_26.patt
   width: 400.0
   center: {x: 0.0, y: 0.0}
@@ -26,7 +26,7 @@ marker:
 
 marker:
   name: front_marker
-  parent_fram: front_marker_base_link
+  parent_fram: front_marker_link_0
   path: data/4x4/4x4_42.patt
   width: 400.0
   center: {x: 0.0, y: 0.0}
@@ -34,7 +34,7 @@ marker:
 
 marker:
   name: left_marker
-  parent_fram: left_marker_base_link
+  parent_fram: left_marker_link_0
   path: data/4x4/4x4_55.patt
   width: 400.0
   center: {x: 0.0, y: 0.0}

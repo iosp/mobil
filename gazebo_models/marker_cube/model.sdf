@@ -88,9 +88,10 @@
     <plugin name='marker_planar' filename='libgazebo_ros_planar_move.so'>
       <commandTopic>marker_cube/cmd_vel</commandTopic>
       <odometryTopic>odom</odometryTopic>
-      <odometryFrame>odom</odometryFrame>
+      <odometryFrame>world</odometryFrame>
       <odometryRate>20.0</odometryRate>
-      <robotBaseFrame>marker_cube_base_frame</robotBaseFrame>
+      <frameName>world</frameName>
+      <robotBaseFrame>link_0</robotBaseFrame>
     </plugin>
   </model>
 </sdf>
