@@ -90,7 +90,7 @@
       <odometryTopic>odom</odometryTopic>
       <odometryFrame>odom</odometryFrame>
       <odometryRate>20.0</odometryRate>
-      <robotBaseFrame>${name_body}</robotBaseFrame>
+      <robotBaseFrame>marker_cube_base_frame</robotBaseFrame>
     </plugin>
   </model>
 </sdf>

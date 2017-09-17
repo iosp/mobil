@@ -124,6 +124,9 @@ Visualization Manager:
                       rear_marker_base_link:
                         free_marker_from_rear_marker_base_link:
                           {}
+                    right_marker:
+                      right_marker_base_link:
+                        {}
                 sonar_link:
                   {}
       Update Interval: 0
