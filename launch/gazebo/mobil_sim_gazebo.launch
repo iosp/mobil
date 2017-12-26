@@ -1,0 +1,38 @@
+<launch>
+
+    <!-- run UAV and UGV launch files -->
+    <include file="$(find mobil_shared_coordinates)/launch/gazebo/UAV_gazebo.launch"/>
+    <include file="$(find mobil_shared_coordinates)/launch/gazebo/UGV_gazebo.launch"/>
+
+
+    <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    
+    <!-- spawn the quadrotor -->
+
+    <include file="$(find hector_quadrotor_gazebo)/launch/spawn_quadrotor_with_cam.launch">
+       <arg name="x" default="-3.0"/>
+       <arg name="y" default="2.0"/>
+       <arg name="z" default="0.3"/>
+    </include>
+
+    <!-- enable the quadrotor -->
+    <!--node pkg="rosservice" type="rosservice" name="global_loc" args="call /enable_motors true"/-->
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find mobil_shared_coordinates)/worlds/mobil_sim_gazebo.world"/>
+        <arg name="paused" default="false"/>
+        <arg name="use_sim_time" default="true"/>
+        <arg name="gui" default="true"/>
+        <arg name="headless" default="false"/>
+        <arg name="debug" default="false"/>
+        <arg name="verbose" default="true"/>
+    </include>
+
+    <!-- rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find mobil_shared_coordinates)/launch/gazebo/mobil_sim_gazebo.rviz"/>
+</launch>

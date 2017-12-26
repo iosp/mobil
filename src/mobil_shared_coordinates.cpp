@@ -30,7 +30,7 @@ bool useMarkerToFindLocation(const tf::TransformListener &transListener, const s
 
 	try
 	{
-		if (transListener.waitForTransform(marker_fn, camera_fn, ros::Time(0), ros::Duration(1.0)))
+		if (transListener.waitForTransform(marker_fn, camera_fn, ros::Time(0), ros::Duration(0)))
 		{
 			transListener.lookupTransform(marker_fn, camera_fn, ros::Time(0), markerTransform);
 			pos_x = markerTransform.getOrigin().x();
@@ -78,7 +78,7 @@ void getFreeMarkerLocation()
 
 	try
 	{
-		if (transListener.waitForTransform(base_link_fn, free_marker_fn, ros::Time(0), ros::Duration(2.0)))
+		if (transListener.waitForTransform(base_link_fn, free_marker_fn, ros::Time(1.0), ros::Duration(2.0)))
 		{
 			transformFound = true;
 			transListener.lookupTransform(base_link_fn, free_marker_fn, ros::Time(0), freeMarkerTransform);

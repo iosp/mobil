@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>   
+
+  <param name="use_sim_time" value="true"/>
+
+  <node name="ar_pose_right" pkg="ar_pose" type="ar_multi" respawn="false" output="screen">
+      <param name="marker_pattern_list" type="string" value="$(find mobil_shared_coordinates)/data/test_file_object"/>
+      <param name="threshold" type="int" value="100"/>
+   	  <remap from="/camera/camera_info" to="/front_cam/camera/camera_info"/>
+      <remap from="/camera/image_raw" to="/front_cam/camera/image"/>
+  </node>
+   
+</launch>
