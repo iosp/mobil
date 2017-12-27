@@ -36,13 +36,11 @@ void MarkersFileParser::parse(string file_path){
 	if (markers_file["obj_name"]) {
 		object_name = markers_file["obj_name"].as<std::string>();
 	}
-	cout<<"objact_name: "<<object_name<<endl;
+	cout<<"object_name: "<<object_name<<endl;
 	cout<<"-------------------------------------------------------------------------------"<<endl;
-	//	int i = 0;
+
 	for (YAML::const_iterator it=markers_file.begin();it!=markers_file.end();++it) {
 		if (it->first.as<std::string>() == "marker"){
-			//			cout<<i<<endl;
-			//			i++;
 			num_of_obj_marker++;
 			name = it->second["name"].as<string>();
 			parent_name = it->second["parent_fram"].as<string>();
@@ -71,17 +69,11 @@ void MarkersFileParser::parse(string file_path){
 					centerY, width));
 		}
 	}
-	//	cout<<i<<endl;
-//		cout<<"------"<<markers_list.size()<<endl;
-//		for(std::vector<Marker*>::iterator it = markers_list.begin() ; it != markers_list.end(); ++it){
-//			cout<<(*it)->toObjectFileString()<<endl;
-//		}
 }
 
 MarkersFileParser::~MarkersFileParser() {
 	// TODO Auto-generated destructor stub
 }
-
 
 Marker::Marker(std::string name, std::string path, std::string parent_fram,
 		double centerX, double centerY, double width,
@@ -123,10 +115,6 @@ Marker::Marker(std::string name, std::string path, double centerX,
 	this->is_goal = is_goal;
 }
 
-//std::string Marker::toString() {
-//  string retVal = n
-//}
-
 std::string Marker::toObjectFileString() {
 	ostringstream ss;
 	ss<<name<<"\n"<<patt_file_path<<"\n"<<width<<"\n"<<center.first<<" "
@@ -134,13 +122,3 @@ std::string Marker::toObjectFileString() {
 	cout<<ss.str()<<endl;
 	return ss.str();
 }
-
-
-
-//int main(){
-//	MarkersFileParser test = MarkersFileParser("/home/mikab4/catkin_ws/src/mobil_shared_coordinates/example_test.yaml");
-//	int num = 5;
-//	int myarr[num];
-//	string fff = "hey";
-//
-//}

@@ -30,7 +30,7 @@ bool useMarkerToFindLocation(const tf::TransformListener &transListener, const s
 
 	try
 	{
-		if (transListener.waitForTransform(marker_fn, camera_fn, ros::Time(0), ros::Duration(1.0)))
+		if (transListener.waitForTransform(marker_fn, camera_fn, ros::Time(0), ros::Duration(0)))
 		{
 			transListener.lookupTransform(marker_fn, camera_fn, ros::Time(0), markerTransform);
 			pos_x = markerTransform.getOrigin().x();
@@ -72,20 +72,28 @@ void getFreeMarkerLocation()
 {
 	tf::TransformListener transListener;
 	tf::StampedTransform freeMarkerTransform;
+	static tf::TransformBroadcaster broadcaster;
+
 	bool transformFound = false;
 
 	try
 	{
-		if (transListener.waitForTransform(base_link_fn, free_marker_fn, ros::Time(0), ros::Duration(2.0)))
+		if (transListener.waitForTransform(base_link_fn, free_marker_fn, ros::Time(1.0), ros::Duration(2.0)))
 		{
 			transformFound = true;
 			transListener.lookupTransform(base_link_fn, free_marker_fn, ros::Time(0), freeMarkerTransform);
 			freeMarkerLocation.setX(freeMarkerTransform.getOrigin().x());
 			freeMarkerLocation.setY(freeMarkerTransform.getOrigin().y());
 			freeMarkerLocation.setZ(freeMarkerTransform.getOrigin().z());
-			cout<<"##################################################################################################"<<endl;
-			ROS_INFO("Free marker location: (%.3f, %.3f, %.3f)", freeMarkerLocation.getX(), freeMarkerLocation.getY(), freeMarkerLocation.getZ());
-			cout<<"##################################################################################################"<<endl;
+			//cout<<"##################################################################################################"<<endl;
+			//ROS_INFO("Free marker location: (%.3f, %.3f, %.3f)", freeMarkerLocation.getX(), freeMarkerLocation.getY(), freeMarkerLocation.getZ());
+			//cout<<"##################################################################################################"<<endl;
+
+			// broadcast transform from UGV base_link to free_marker
+			freeMarkerTransform.child_frame_id_ = "free_marker_from_" + base_link_fn;
+			freeMarkerTransform.frame_id_ = robot_fn;
+			broadcaster.sendTransform(freeMarkerTransform);
+
 			if (csv_file) {
 				csv_file << freeMarkerLocation.getX() << "," << freeMarkerLocation.getY() << "," << freeMarkerLocation.getZ();
 			}

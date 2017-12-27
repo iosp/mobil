@@ -10,13 +10,13 @@
   <include file="$(find mobil_shared_coordinates)/launch/include/multimaster.launch" if="$(arg is_multirobot_system)"/>
   
   <node pkg="mobil_shared_coordinates" type="marker_data_service" name="marker_data_service_kommado" output="screen" cwd="node">
-      <param name="yaml_file_paths" type="string" value="$(find mobil_shared_coordinates)/example.yaml"/>  
-      <param name="robot_name" type="string" value="kommado"/>		   
+      <param name="yaml_file_paths" type="string" value="$(find mobil_shared_coordinates)/gazebo_sim.yaml"/>  
+      <param name="robot_name" type="string" value="marker_cube"/>		   
   </node>
  
   <node pkg="mobil_shared_coordinates" type="mobil_shared_coordinates" name="mobil_shared_coordinates" args="$(arg bag)" output="screen" cwd="node">
-      <param name="camera_fn" type="string" value="drone"/>  
-      <param name="robot_fn" type="string" value="base_link"/>		  
+      <param name="camera_fn" type="string" value="front_cam_optical_frame"/>  
+      <param name="robot_fn" type="string" value="link_0"/>		  
       <param name="center_marker_fn" type="string" value="center_marker"/>
       <param name="left_marker_fn" type="string" value="left_marker"/>       
       <param name="right_marker_fn" type="string" value="right_marker"/> 

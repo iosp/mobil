@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<launch>   
+
+  <param name="use_sim_time" value="true"/>
+  <arg name="is_multirobot_system" default="false"/>
+  
+  <!-- sync between roscores on each robot/pc -->
+  <include file="$(find mobil_shared_coordinates)/launch/include/multimaster.launch" if="$(arg is_multirobot_system)"/>
+
+  <node pkg="mobil_shared_coordinates" type="marker_data_client.py" name="marker_data_client_kommado" output="screen" cwd="node">
+      <param name="object_data_file_path" type="string" value="$(find mobil_shared_coordinates)/data/test_file_object"/>  
+      <param name="ar_pose_launch_file" type="string" value="$(find mobil_shared_coordinates)/launch/gazebo/ar_pose_gazebo.launch"/>		  
+      <param name="team_members" type="string" value="marker_cube"/>
+  </node>
+    
+ 
+</launch>

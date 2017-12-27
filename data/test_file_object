@@ -1,31 +1,31 @@
 6
 center_marker
 data/4x4/4x4_3.patt
-200
+400
 0 0
 
 rear_marker
 data/4x4/4x4_17.patt
-200
+400
 0 0
 
 right_marker
 data/4x4/4x4_26.patt
-200
+400
 0 0
 
 front_marker
 data/4x4/4x4_42.patt
-200
-0 0
-
-4x4_73
-data/4x4/4x4_73.patt
-200
+400
 0 0
 
 left_marker
 data/4x4/4x4_55.patt
-200
+400
+0 0
+
+4x4_73
+data/4x4/4x4_73.patt
+400
 0 0
 

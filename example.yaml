@@ -1,8 +1,8 @@
-obj_name: komado
+obj_name: komodo
 
 marker:
   name: center_marker
-  parent_fram: center_marke_base_link
+  parent_fram: center_marker_base_link
   path: data/4x4/4x4_3.patt
   width: 200.0
   center: {x: 0.0, y: 0.0}
@@ -34,7 +34,7 @@ marker:
 
 marker:
   name: left_marker
-  parent_fram: left_marke_base_link
+  parent_fram: left_marker_base_link
   path: data/4x4/4x4_55.patt
   width: 200.0
   center: {x: 0.0, y: 0.0}
