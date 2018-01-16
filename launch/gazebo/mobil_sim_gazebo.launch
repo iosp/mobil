@@ -21,7 +21,10 @@
     </include>
 
     <!-- enable the quadrotor -->
-    <!--node pkg="rosservice" type="rosservice" name="global_loc" args="call /enable_motors true"/-->
+    <node pkg="rosservice" type="rosservice" name="global_loc" args="call --wait /enable_motors true"/>
+
+    <!-- teleoperate the quadrotor -->
+    <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="quadrotor_teleop" output="screen"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(find mobil_shared_coordinates)/worlds/mobil_sim_gazebo.world"/>
