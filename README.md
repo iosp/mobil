@@ -81,4 +81,44 @@ q/z : increase/decrease max speeds by 10%
 w/x : increase/decrease only linear speed by 10%
 e/c : increase/decrease only angular speed by 10%
 
+***********************************************************************************
+Michele's Notes:
+**************************************************************************************
+Environment: Ubuntu 16.04 ROS Kinetic Gazebo 8.6.0
+
+In order to make it work:
+1. copy $mobil/gazebo_models/free_marker_cube and $mobil/gazebo_models/marker_cube and $mobil/gazebo_models/ar_tags/model/marker0 to ~/.gazebo/models
+2. run the script: cd $mobil/gazebo_models/ar_tags/scripts; ./generate_markers_model.py -i ~/ws/src/mobil/gazebo_models/ar_tags/images/ -g /home/robil/.gazebo/models/
+3. clone the https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git and build it before dealing with https://github.com/tu-darmstadt-ros-pkg/hector_quadrotor.git
+The both repositories are in branch kinetic-devel
+4. several ros packages had to be installed: for example ros-kinetic-gazebo8-ros-control
+
+************************************************************************
+Actual STATUS:
+***********************************************************************
+Launching roslaunch mobil_shared_coordinates mobil_sim_gazebo.launch actually open gazebo with hector and markers and RVIZ.
+When on the terminal that launched the simulation, you can play with Hector using the keys as mentionned above.
+There are still major errors: 
+- from the console:
+[ WARN] [1537193299.285611515]: TF between marker center_marker and base is unavailable
+[ WARN] [1537193299.285655638]: TF between marker left_marker and base is unavailable
+[ WARN] [1537193299.285674664]: TF between marker right_marker and base is unavailable
+[ WARN] [1537193299.285701456]: TF between marker front_marker and base is unavailable
+                                                                                                                                                                                 [ WARN] [1537193299.285726719]: TF between marker rear_marker and base is unavailable
+
+[ WARN] [1537193301.387369067, 566.715000000]: Desired controller update period (0.010000000 s) is slower than the gazebo simulation period (0.001000000 s)
+
+[ERROR] [1537193304.023512481, 569.134000000]: TF between the free marker and camera is unavailable
+
+Warning: TF_OLD_DATA ignoring data from the past for frame ${name_body} at time 0 according to authority unknown_publisher 
+                                                                                                                                                                            Possible reasons are listed at http://wiki.ros.org/tf/Errors%20explained at line 277 in /tmp/binarydeb/ros-kinetic-tf2-0.5.18/src/buffer_core.cpp
+
+==> impossible to understand the data displayed on the console because of the error and warning messages.
+
+- from gazebo log (~/.gazebo/server-11345/default.log):
+(1537194080 436669066) [hector_quadrotor_controller_gazebo] Using ground truth from Gazebo as state input for control
+(1537194080 437090980) [hector_quadrotor_controller_gazebo] Using ground truth from Gazebo as imu input for control
+
+
+
 
